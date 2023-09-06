@@ -1,9 +1,15 @@
 import Head from 'next/head';
+import { Button, Grid, Modal, Paper } from '@mantine/core';
+import React, { useState } from 'react';
 import { ColorSchemeToggle } from '../components/ColorSchemeToggle/ColorSchemeToggle';
 import AppHeader from '../components/AppHeader/AppHeader.';
 import { links } from '../config/AppMenu';
+import ConsoleEmulator from '../components/ConsoleEmulator/ConsoleEmulator.';
+import AppBody from '../components/AppBody/AppBody.';
 
 export default function HomePage() {
+    const [resetSignal, setResetSignal] = useState(false);
+
     return (
         <>
             <Head>
@@ -13,7 +19,24 @@ export default function HomePage() {
             </Head>
 
             <AppHeader links={links} />
-            <ColorSchemeToggle />
+            <AppBody>
+                <Grid justify="center">
+                    <Grid.Col>
+                        <Paper
+                          shadow="md"
+                          style={{
+                                display: 'flex',
+                                justifyContent: 'center',
+                            }}
+                        >
+                            <ConsoleEmulator resetSignal={resetSignal} />
+
+                        </Paper>
+                    </Grid.Col>
+                </Grid>
+
+            </AppBody>
+
         </>
     );
 }

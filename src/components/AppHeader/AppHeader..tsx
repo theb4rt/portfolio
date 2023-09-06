@@ -18,11 +18,12 @@ const AppHeader: React.FC<{ links: LinkType[] }> = ({ links }) => {
         height?: number | string;
     };
 
-    const LogoB4rtWraper: React.FC<SvgProps> = ({
-                                                    color = 'red',
-                                                    width = 450,
-                                                    height = 110,
-                                                }) => (
+    const LogoB4rtWraper:
+        React.FC<SvgProps> = ({
+                                  color = 'red',
+                                  width = 450,
+                                  height = 110,
+                              }) => (
         <div style={{
             width,
             height,
@@ -78,16 +79,7 @@ const AppHeader: React.FC<{ links: LinkType[] }> = ({ links }) => {
         <Header height={150} mb={120}>
             <Container>
                 <div className={classes.inner}>
-                    {/*<div style={{*/}
-                    {/*    color: '#58bc82',*/}
-                    {/*    display: 'inline-block',*/}
-                    {/*    padding: rem(5),*/}
-                    {/*    borderRadius: rem(5),*/}
-                    {/*}}*/}
-                    {/*>*/}
-                    {/*    <Image src={B4rtLogo} alt="Logo" width={450} height={110} />*/}
-                    {/*</div>*/}
-                    <LogoB4rtWraper color="#58bc82" width={500} height={120} />
+                    <LogoB4rtWraper color="#58bc82" width={400} height={100} />
 
                     <Group spacing={5} className={classes.links}>
                         {items}
