@@ -24,11 +24,11 @@ export const useStyles = createStyles((theme) => ({
     link: {
         display: 'block',
         lineHeight: 1,
-        padding: `${rem(8)} ${rem(12)}`,
-        borderRadius: theme.radius.sm,
+        padding: `${rem(8)} ${rem(14)}`,
+        borderRadius: theme.radius.md,
         textDecoration: 'none',
         color: theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.colors.gray[7],
-        fontSize: theme.fontSizes.sm,
+        fontSize: theme.fontSizes.md,
         fontWeight: 500,
 
         '&:hover': {

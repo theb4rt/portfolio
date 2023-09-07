@@ -15,9 +15,9 @@ const ConsoleEmulator: React.FC = () => {
         ' whoami',
         ' echo "Welcome to my page!"',
         ' ls -al',
-        //  ' ls',
+        ' cat about_me.txt',
         ' cat projects.txt',
-        //  ' cat about_me.txt',
+
     ];
 
     useEffect(() => {
@@ -30,15 +30,17 @@ const ConsoleEmulator: React.FC = () => {
     const getResponse = (command: string): string => {
         switch (command) {
             case ' whoami':
-                return 'Jose Manuel\n';
+                return 'Jose Manuel a.k.a. "B4rt"\n';
             case ' echo "Welcome to my page!"':
                 return 'Welcome to my page!';
             case ' ls -al':
                 return 'drwxr-xr-x  2 b4rt b4rt 4096 Aug 25 12:34  about_me.txt\ndrwxr-xr-x  6 b4rt b4rt 4096 Aug 25 12:24 projects.txt';
+            case ' cat about_me.txt':
+                return 'Software Engineer, Python Developer, Linux Enthusiast, Security Researcher, and more...\n';
             case ' cat projects.txt':
                 return 'PiZ0mn1aTool: https://github.com/theb4rt/pizomniatool\n ' +
-                    'Dyssomnia-scanner https://github.com/theb4rt/dyssomnia-scanner\n' +
-                    'IotManagementPlatform https://github.com/theb4rt/iot-devices\n';
+                    'Dyssomnia-scanner: https://github.com/theb4rt/dyssomnia-scanner\n' +
+                    'IotManagementPlatform: https://github.com/theb4rt/iot-devices\n';
 
             default:
                 return `${command}: command not found`;
@@ -111,6 +113,7 @@ const ConsoleEmulator: React.FC = () => {
               radius="xl"
               className={styles.resetButton}
               onClick={() => resetConsole()}
+              disabled={!isAnimationFinished}
             >
                 Reset
             </Button>

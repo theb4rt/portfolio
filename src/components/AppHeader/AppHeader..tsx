@@ -3,7 +3,6 @@ import { useDisclosure } from '@mantine/hooks';
 import { IconChevronDown } from '@tabler/icons-react';
 import React from 'react';
 import { LinkType } from '../../config/AppMenu';
-// import B4rtLogo from '../../../public/assets/logos/b4rt-logo-1.svg';
 import { useStyles } from './AppHeader.styles';
 import B4rtLogo from '../../../public/assets/logos/b4rt-logo-1.svg';
 
@@ -17,7 +16,7 @@ const AppHeader: React.FC<{ links: LinkType[] }> = ({ links }) => {
         height?: number | string;
     };
 
-    const LogoBartWraper:
+    const LogoBartWrapper:
         React.FC<SvgProps> = ({
                                   color = 'red',
                                   width = 450,
@@ -78,7 +77,7 @@ const AppHeader: React.FC<{ links: LinkType[] }> = ({ links }) => {
         <Header height={150} mb={40}>
             <Container>
                 <div className={classes.inner}>
-                    <LogoBartWraper color="#58bc82" width={400} height={100} />
+                    <LogoBartWrapper color="#58bc82" width={400} height={100} />
                     <Group spacing={10} className={classes.links}>
                         {items}
                     </Group>
