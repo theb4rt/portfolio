@@ -1,5 +1,5 @@
 import { ActionIcon, Container, Group, Text } from '@mantine/core';
-import { IconBrandInstagram, IconBrandTwitter, IconBrandYoutube } from '@tabler/icons-react';
+import { IconBrandTwitter, IconBrandYoutube } from '@tabler/icons-react';
 import { IconBrandBlogger, IconBrandGithub, IconBrandLinkedin } from '@tabler/icons';
 import useStyles from './AppFooter.styles';
 
@@ -43,7 +43,6 @@ export const AppFooter = () => {
                         <IconBrandYoutube size="2.05rem" stroke={2} />
                     </ActionIcon>
                     <ActionIcon
-
                       size="lg"
                       component="a"
                       target="_blank"
