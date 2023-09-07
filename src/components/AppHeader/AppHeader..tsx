@@ -1,8 +1,7 @@
-import { createStyles, Header, Menu, Group, Center, Burger, Container, rem } from '@mantine/core';
+import { Burger, Center, Container, Group, Header, Menu } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { IconChevronDown } from '@tabler/icons-react';
 import React from 'react';
-import Image from 'next/image';
 import { LinkType } from '../../config/AppMenu';
 // import B4rtLogo from '../../../public/assets/logos/b4rt-logo-1.svg';
 import { useStyles } from './AppHeader.styles';
