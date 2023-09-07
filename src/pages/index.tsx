@@ -5,6 +5,7 @@ import AppHeader from '../components/AppHeader/AppHeader.';
 import { links } from '../config/AppMenu';
 import ConsoleEmulator from '../components/ConsoleEmulator/ConsoleEmulator.';
 import AppBody from '../components/AppBody/AppBody.';
+import { AppFooter } from '../components/AppFooter/AppFooter.';
 
 export default function HomePage() {
     return (
@@ -33,6 +34,7 @@ export default function HomePage() {
                 </Grid>
 
             </AppBody>
+            <AppFooter />
 
         </>
     );
