@@ -1,8 +1,8 @@
 import Head from 'next/head';
-import {Grid, Paper} from '@mantine/core';
+import { Grid, Paper } from '@mantine/core';
 import React from 'react';
 import AppHeader from '../components/AppHeader/AppHeader.';
-import {links} from '../config/AppMenu';
+import { links } from '../config/AppMenu';
 import ConsoleEmulator from '../components/ConsoleEmulator/ConsoleEmulator.';
 import AppBody from '../components/AppBody/AppBody.';
 
