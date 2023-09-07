@@ -1,15 +1,12 @@
 import Head from 'next/head';
-import { Button, Grid, Modal, Paper } from '@mantine/core';
-import React, { useState } from 'react';
-import { ColorSchemeToggle } from '../components/ColorSchemeToggle/ColorSchemeToggle';
+import {Grid, Paper} from '@mantine/core';
+import React from 'react';
 import AppHeader from '../components/AppHeader/AppHeader.';
-import { links } from '../config/AppMenu';
+import {links} from '../config/AppMenu';
 import ConsoleEmulator from '../components/ConsoleEmulator/ConsoleEmulator.';
 import AppBody from '../components/AppBody/AppBody.';
 
 export default function HomePage() {
-    const [resetSignal, setResetSignal] = useState(false);
-
     return (
         <>
             <Head>
@@ -29,7 +26,7 @@ export default function HomePage() {
                                 justifyContent: 'center',
                             }}
                         >
-                            <ConsoleEmulator resetSignal={resetSignal} />
+                            <ConsoleEmulator />
 
                         </Paper>
                     </Grid.Col>

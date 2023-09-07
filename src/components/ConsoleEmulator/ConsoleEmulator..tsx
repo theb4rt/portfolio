@@ -1,18 +1,31 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { Button } from '@mantine/core';
 import styles from './ConsoleEmulator.module.css';
 
-const ConsoleEmulator: React.FC<{ resetSignal: boolean }> = ({ resetSignal }) => {
+const ConsoleEmulator: React.FC = () => {
     let currentCommandIndex = 0;
     const [isAnimationFinished, setIsAnimationFinished] = useState(false);
-    const [userCommand, setUserCommand] = useState('');
     const [outputText, setOutputText] = useState<string>('');
+    const [inputValue, setInputValue] = useState('');
+    const inputRef = useRef<HTMLInputElement>(null);
+    const spanRef = useRef<HTMLSpanElement>(null);
+    const buttonFocusRef = useRef<HTMLButtonElement>(null);
+
     const commands: string[] = [
         ' whoami',
         ' echo "Welcome to my page!"',
         ' ls -al',
+        //  ' ls',
         ' cat projects.txt',
+        //  ' cat about_me.txt',
     ];
+
+    useEffect(() => {
+        if (spanRef.current && inputRef.current) {
+            const spanWidth = spanRef.current.offsetWidth;
+            inputRef.current.style.width = `${spanWidth + 5}px`;
+        }
+    }, [inputValue]);
 
     const getResponse = (command: string): string => {
         switch (command) {
@@ -32,9 +45,29 @@ const ConsoleEmulator: React.FC<{ resetSignal: boolean }> = ({ resetSignal }) =>
         }
     };
 
+    const handleUserCommand = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        if (e.key === 'Enter') {
+            const response = getResponse(` ${inputValue}`);
+            setOutputText(prev => `${prev}${inputValue}\n${response}\n[b4rt@-pc] $ `);
+            setInputValue('');
+        }
+    };
+
     const typeCommand = () => {
         if (currentCommandIndex >= commands.length) {
             setIsAnimationFinished(true);
+
+            inputRef.current?.focus();
+
+            setTimeout(() => {
+                setInputValue(' ');
+
+                setTimeout(() => {
+                    setInputValue('');
+                }, 1);
+            }, 1);
+            buttonFocusRef.current?.click();
+
             return;
         }
         if (currentCommandIndex >= commands.length) return;
@@ -56,7 +89,6 @@ const ConsoleEmulator: React.FC<{ resetSignal: boolean }> = ({ resetSignal }) =>
                 }, 100);
             }
         };
-
         typeLetter();
     };
     const resetConsole = () => {
@@ -79,21 +111,36 @@ const ConsoleEmulator: React.FC<{ resetSignal: boolean }> = ({ resetSignal }) =>
               radius="xl"
               className={styles.resetButton}
               onClick={() => resetConsole()}
-            >Reset
+            >
+                Reset
             </Button>
+
+            <Button
+              ref={buttonFocusRef}
+              onClick={() => inputRef.current?.focus()}
+              style={{
+                    visibility: 'hidden',
+                    position: 'absolute',
+                }}
+            />
 
             {outputText.split('\n')
                 .map((line, index, array) => {
                     const urlMatch = line.match(/https:\/\/[^ ]+/);
                     const isLastLine = index === array.length - 1;
-
+                    if (isLastLine && isAnimationFinished && line.trim() === '[b4rt@-pc] $') {
+                        return null;
+                    }
                     if (urlMatch) {
                         const url = urlMatch[0];
                         return (
                             <div key={index}>
                                 {line.replace(url, '')}
                                 <a href={url} target="_blank" rel="noopener noreferrer">{url}</a>
-                                {isLastLine && <span className={styles.cursor} />}
+                                {isLastLine && <span className={styles.cursor} />
+
+                                }
+
                             </div>
                         );
                     }
@@ -105,6 +152,25 @@ const ConsoleEmulator: React.FC<{ resetSignal: boolean }> = ({ resetSignal }) =>
                         </div>
                     );
                 })}
+
+            {isAnimationFinished && <div className={styles.inputLine}>
+                <span>[b4rt@-pc] $ </span>
+                <div className={styles.inputContainer}>
+                    <input
+                      ref={inputRef}
+                      type="text"
+                      value={inputValue}
+                      onChange={(e) => setInputValue(e.target.value)}
+                      onKeyDown={handleUserCommand}
+                      placeholder=""
+                      className={styles.consoleInput}
+                      autoFocus
+                    />
+                    <span ref={spanRef} className={styles.mirrorText}>{inputValue}</span>
+                    <span className={styles.cursor} />
+                </div>
+
+                                    </div>}
 
         </div>
 

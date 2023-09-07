@@ -76,7 +76,7 @@ const AppHeader: React.FC<{ links: LinkType[] }> = ({ links }) => {
     });
 
     return (
-        <Header height={150} mb={120}>
+        <Header height={150} mb={50}>
             <Container>
                 <div className={classes.inner}>
                     <LogoB4rtWraper color="#58bc82" width={400} height={100} />
