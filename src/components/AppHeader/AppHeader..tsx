@@ -17,7 +17,7 @@ const AppHeader: React.FC<{ links: LinkType[] }> = ({ links }) => {
         height?: number | string;
     };
 
-    const LogoB4rtWraper:
+    const LogoBartWraper:
         React.FC<SvgProps> = ({
                                   color = 'red',
                                   width = 450,
@@ -75,12 +75,11 @@ const AppHeader: React.FC<{ links: LinkType[] }> = ({ links }) => {
     });
 
     return (
-        <Header height={150} mb={50}>
+        <Header height={150} mb={40}>
             <Container>
                 <div className={classes.inner}>
-                    <LogoB4rtWraper color="#58bc82" width={400} height={100} />
-
-                    <Group spacing={5} className={classes.links}>
+                    <LogoBartWraper color="#58bc82" width={400} height={100} />
+                    <Group spacing={10} className={classes.links}>
                         {items}
                     </Group>
                     <Burger opened={opened} onClick={toggle} className={classes.burger} size="sm" />
