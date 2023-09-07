@@ -23,7 +23,7 @@ const ConsoleEmulator: React.FC = () => {
     useEffect(() => {
         if (spanRef.current && inputRef.current) {
             const spanWidth = spanRef.current.offsetWidth;
-            inputRef.current.style.width = `${spanWidth + 5}px`;
+            inputRef.current.style.width = `${spanWidth + 1}px`;
         }
     }, [inputValue]);
 
