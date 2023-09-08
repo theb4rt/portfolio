@@ -5,6 +5,7 @@ import Head from 'next/head';
 import { MantineProvider, ColorScheme, ColorSchemeProvider } from '@mantine/core';
 import { Notifications } from '@mantine/notifications';
 import { customLightTheme, customDarkTheme } from '../../themes';
+import '../styles/global.css';
 
 export default function App(props: AppProps & { colorScheme: ColorScheme }) {
     const {

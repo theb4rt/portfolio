@@ -23,24 +23,26 @@ export default function HomePage() {
             </Head>
 
             <AppHeader links={links} />
-            <AppBody>
-                <Grid justify="center">
-                    <Grid.Col>
-                        <Paper
-                          shadow="md"
-                          style={{
-                                display: 'flex',
-                                justifyContent: 'center',
-                            }}
-                        >
-                            <ConsoleEmulator />
+            <div className="flexContainer">
 
-                        </Paper>
-                    </Grid.Col>
-                </Grid>
+                <AppBody>
+                    <Grid justify="center">
+                        <Grid.Col>
+                            <Paper
+                              shadow="md"
+                              style={{
+                                    display: 'flex',
+                                    justifyContent: 'center',
+                                }}
+                            >
+                                <ConsoleEmulator />
+                            </Paper>
+                        </Grid.Col>
+                    </Grid>
+                </AppBody>
 
-            </AppBody>
-            <AppFooter />
+                <AppFooter />
+            </div>
 
         </>
     );

@@ -1,11 +1,11 @@
-import { createStyles, rem } from '@mantine/core';
+import {createStyles, rem} from '@mantine/core';
 
 const useStyles = createStyles((theme) => ({
     footer: {
-        position: 'absolute',
+        position: 'relative',
         bottom: 0,
         width: '100%',
-        marginTop: rem(120),
+        marginTop: rem(500),
         // paddingTop: `calc(${theme.spacing.xl} * 2)`,
         // paddingBottom: `calc(${theme.spacing.xl} * 2)`,
         backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0],
@@ -63,6 +63,16 @@ const useStyles = createStyles((theme) => ({
             marginTop: theme.spacing.xs,
         },
     },
+    flexContainer: {
+        display: 'flex',
+        flexDirection: 'column',
+        minHeight: '100vh',
+    },
+
+    content: {
+        flex: '1 0 auto',
+    },
+
 }));
 
 export default useStyles;

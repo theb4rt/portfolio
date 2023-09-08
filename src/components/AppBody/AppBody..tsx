@@ -9,8 +9,9 @@ const AppBody: React.FC<AppBodyProps> = ({ children }) => (
     <Container
       size="lg"
       style={{
-            marginTop: '1rem',
-            marginBottom: '2rem',
+            // marginTop: '1rem',
+            // marginBottom: '2rem',
+            flex: 1,
         }}
     >
         {children}
