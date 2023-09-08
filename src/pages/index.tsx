@@ -14,7 +14,7 @@ export default function HomePage() {
                 <title>b4rt.dev</title>
                 <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
                 <link rel="shortcut icon" href="/favicon.png" />
-                <meta name="title" content="B4rt.dev - Jose Manuel's Software Engineering Portfolio" />
+                <meta name="title" content="B4rt.dev - Software Engineer" />
                 <meta
                   name="description"
                   content="Software Engineer, Python Developer, Linux Enthusiast, Security Researcher, and more.."

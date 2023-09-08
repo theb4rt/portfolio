@@ -11,7 +11,7 @@ export const AppFooter = () => {
 
             <Container className={classes.afterFooter}>
                 <Text color="dimmed" size="sm">
-                    © 2023 b4rt.dev. All rights reserved.
+                    © 2023 b4rt.dev - All rights reserved.
                 </Text>
 
                 <Group spacing={20} className={classes.social} position="right" noWrap>
