@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import {Box, Button} from '@mantine/core';
+import { Box, Button } from '@mantine/core';
 import styles from './ConsoleEmulator.module.css';
 
 const ConsoleEmulator: React.FC = () => {
