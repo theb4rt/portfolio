@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { Button } from '@mantine/core';
+import {Box, Button} from '@mantine/core';
 import styles from './ConsoleEmulator.module.css';
 
 const ConsoleEmulator: React.FC = () => {
@@ -55,6 +55,12 @@ const ConsoleEmulator: React.FC = () => {
         }
     };
 
+    const handleConsoleClick = () => {
+        if (inputRef.current) {
+            inputRef.current.focus();
+        }
+    };
+
     const typeCommand = () => {
         if (currentCommandIndex >= commands.length) {
             setIsAnimationFinished(true);
@@ -107,7 +113,7 @@ const ConsoleEmulator: React.FC = () => {
     }, []);
 
     return (
-        <div className={styles.console}>
+        <Box className={styles.console} onClick={handleConsoleClick}>
             <Button
               color="lime"
               radius="xl"
@@ -175,7 +181,7 @@ const ConsoleEmulator: React.FC = () => {
 
                                     </div>}
 
-        </div>
+        </Box>
 
     );
 };
