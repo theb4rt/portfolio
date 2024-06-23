@@ -16,61 +16,66 @@ const AppHeader: React.FC<{ links: LinkType[] }> = ({ links }) => {
         height?: number | string;
     };
 
-    const LogoBartWrapper:
-        React.FC<SvgProps> = ({
-                                  color = 'red',
-                                  width = 450,
-                                  height = 110,
-                              }) => (
-        <div style={{
-            width,
-            height,
-            color,
-        }}
-        >
-
+    const LogoBartWrapper: React.FC<SvgProps> = ({
+                                                     color = 'red',
+                                                     width = 450,
+                                                     height = 110,
+                                                 }) => (
+        <div style={{ width, height, color }}>
             <B4rtLogo />
-
         </div>
     );
 
     const items = links.map((linkItem) => {
-        const menuItems = linkItem.links && linkItem.links.length > 0
-            ? linkItem.links.map((submenuItem) => (
-                <Menu.Item key={submenuItem.link}>{submenuItem.label}</Menu.Item>
-            ))
-            : null;
-
-        if (menuItems) {
+        if (linkItem.isExternal) {
             return (
-                <Menu key={linkItem.label} trigger="hover" transitionProps={{ exitDuration: 0 }} withinPortal>
-                    <Menu.Target>
-                        <a
-                          href={linkItem.link}
-                          className={classes.link}
-                          onClick={(event) => event.preventDefault()}
-                        >
-                            <Center>
-                                <span className={classes.linkLabel}>{linkItem.label}</span>
-                                <IconChevronDown size="0.9rem" stroke={1.5} />
-                            </Center>
-                        </a>
-                    </Menu.Target>
-                    <Menu.Dropdown>{menuItems}</Menu.Dropdown>
-                </Menu>
+                <a
+                  target="_blank"
+                  key={linkItem.label}
+                  href={linkItem.link}
+                  className={classes.link}
+                  rel="noopener noreferrer"
+                >
+                    {linkItem.label}
+                </a>
             );
         }
+            const menuItems = linkItem.links && linkItem.links.length > 0
+                ? linkItem.links.map((submenuItem) => (
+                    <Menu.Item key={submenuItem.link}>{submenuItem.label}</Menu.Item>
+                ))
+                : null;
 
-        return (
-            <a
-              key={linkItem.label}
-              href={linkItem.link}
-              className={classes.link}
-              onClick={(event) => event.preventDefault()}
-            >
-                {linkItem.label}
-            </a>
-        );
+            if (menuItems && linkItem.subMenu) {
+                return (
+                    <Menu key={linkItem.label} trigger="hover" transitionProps={{ exitDuration: 0 }} withinPortal>
+                        <Menu.Target>
+                            <a
+                              href="#"
+                              className={classes.link}
+                              onClick={(event) => event.preventDefault()}
+                            >
+                                <Center>
+                                    <span className={classes.linkLabel}>{linkItem.label}</span>
+                                    <IconChevronDown size="0.9rem" stroke={1.5} />
+                                </Center>
+                            </a>
+                        </Menu.Target>
+                        <Menu.Dropdown>{menuItems}</Menu.Dropdown>
+                    </Menu>
+                );
+            }
+
+            return (
+                <a
+                  key={linkItem.label}
+                  href="#"
+                  className={classes.link}
+                  onClick={(event) => event.preventDefault()}
+                >
+                    {linkItem.label}
+                </a>
+            );
     });
 
     return (

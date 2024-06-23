@@ -39,4 +39,8 @@ export const useStyles = createStyles((theme) => ({
     linkLabel: {
         marginRight: rem(5),
     },
+    disabledLink: {
+        color: theme.colors.gray[5],
+        pointerEvents: 'none',
+    },
 }));
